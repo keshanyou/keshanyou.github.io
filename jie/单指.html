@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#k{width: 100px;height: 100px;background: yellow;
+			-webkit-transform: translate(50, 50);
+			transform: translate(50, 50);
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="k"></div>
+	</body>
+	<script src="LYween.js"></script>
+	<script type="text/javascript">
+		document.addEventListener('touchstart',function(e){
+			e.preventDefault();
+		},false);
+		
+		(function(){
+			var k=document.querySelector('#k');
+			
+		})()
+		
+		function gesture(init){
+			var el=init.el;
+			var isDrag=false;
+			var start={};
+			el.addEventListener('touchstart',function(e){
+				if(e.length==1){
+					isDrag=true;
+					start[0]={
+						x:e.touches[0].pageX,
+						y:e.touches[0].pageY
+					}
+					init.start&&init.start.call(el,e)
+				}
+			});
+		}
+	</script>
+</html>
